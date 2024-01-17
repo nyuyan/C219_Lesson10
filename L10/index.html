@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <title>Vaccination Centres</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  </head>
+
+  <body>
+    <div id="fullpage">
+      <div id="cases-section" class="section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-black">
+          <a class="navbar-brand ms-auto text-white px-4" href="#"
+            >Covid-19 In Singapore</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon bg-white"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav">
+              <li class="px-4 nav-item active">
+                <a class="nav-link text-white" href="#cases-section">Cases</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="px-4 nav-link text-white"
+                  href="#vaccination-progress-section"
+                  >Vaccination Progress</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="px-4 nav-link text-white"
+                  href="#vaccination-centres-section"
+                  >Vaccination Centres</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-6">
+              <h2><b>Cases</b></h2>
+              <div class="text-container mt-4 d-flex justify-content-between">
+                <div class="text-item text-center">
+                  <p><b>Total Cases</b></p>
+                  <div class="demo6">0</div>
+                </div>
+                <div class="text-item text-center">
+                  <p><b>In Hospital</b></p>
+                  <div class="demo7">0</div>
+                </div>
+                <div class="text-item text-center">
+                  <p><b>Total Deaths</b></p>
+                  <div class="demo8">0</div>
+                </div>
+              </div>
+              <div class="long-text-container pt-3">
+                <p class="demo1">
+                  The number of Covid-19 cases in Singapore has grown to 257510,
+                  with <br />
+                  2079 new cases reported on 31 Dec.
+                </p>
+                <br />
+                <p class="demo1">
+                  Of these, 2030 were reported in the community and 40 in the
+                  workers’<br />
+                  dormitories. The remaining nine cases were imported.
+                </p>
+                <br />
+                <p class="demo1">
+                  A further 2275 patients were discharged, including 366 seniors
+                  aged above<br />
+                  60. A total of 238909 cases have recovered to date.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <h3><b>Daily Cases(past 2 weeks)</b></h3>
+              <div class="container">
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="vaccination-progress-section" class="section">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-6">
+              <h3>
+                <b
+                  >9 out of 10 singaporeans <br />
+                  <h6>has been vaccinated</h6>
+                </b>
+              </h3>
+              <div class="container">
+                <div
+                  id="svg-container"
+                  style="display: flex; flex-wrap: wrap"
+                ></div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <h2><b>Vaccination Progress</b></h2>
+              <div class="long-text-container pt-3">
+                <p class="demo1">
+                  For every 100 people in Singapore, 88 have received their
+                  first dose<br />
+                  and 87 are fully vaccinated as at 14 Dec.
+                </p>
+                <br />
+                <p class="demo1">
+                  In addition, the Health Ministry reported that as at 14 Dec,
+                  96 percent<br />
+                  of the eligible population (aged 12 years and above) have
+                  completed<br />
+                  their full regime, or received two doses of Covid-19 vaccines.
+                </p>
+                <br />
+                <p class="demo1">
+                  With new Covid-19 variants such as Omicron surfacing, full<br />
+                  vaccination will have to include booster shots as well.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div id="vaccination-centres-section" class="section">
+        <div class="container-fluid">
+          <h1>
+            <b>Vaccination Centres</b> <br /><br />
+            <h6>There are currently 12 vaccinations centres in operation</h6>
+          </h1>
+          
+          <div class="row">
+            <div class="col-6">
+              <div class="container">
+                <?xml version="1.0" encoding="utf-8"?>
+                <svg
+                  version="1.1"
+                  id="Capa_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 600 400"
+                  style="enable-background: new 0 0 512 322.1"
+                  xml:space="preserve"
+                >
+                  <style type="text/css">
+                    .st0 {
+                      fill: #333;
+                    }
+                  </style>
+                  <path
+                    class="st0"
+                    d="M491.7,196.6c0.4-0.4,0.8-0.9,1.2-1.3c0.3-0.3,0.5-0.6,0.8-0.8c0.5-0.5,0.9-1,1.4-1.6c0.2-0.2,0.3-0.4,0.5-0.6
+	c0.6-0.7,1.2-1.4,1.7-2.2c0.2-0.3,0.4-0.6,0.7-0.9c0.3-0.5,0.7-0.9,1-1.4c0.2-0.3,0.5-0.7,0.7-1c0.3-0.4,0.6-0.9,0.9-1.4
+	c0.2-0.4,0.5-0.7,0.7-1.1c0.3-0.5,0.6-0.9,0.8-1.4c0.2-0.4,0.4-0.7,0.7-1.1c0.3-0.5,0.5-1,0.8-1.5c0.2-0.4,0.4-0.7,0.6-1.1
+	c0.4-0.8,0.8-1.7,1.2-2.5c0.2-0.4,0.3-0.7,0.5-1.1c0.2-0.5,0.5-1.1,0.7-1.6c0.2-0.4,0.3-0.9,0.5-1.3c0.2-0.5,0.4-1,0.6-1.5
+	c0.2-0.5,0.3-0.9,0.5-1.4c0.2-0.5,0.3-1,0.5-1.5c0.1-0.5,0.3-0.9,0.4-1.4c0.1-0.5,0.3-1,0.4-1.5c0.1-0.5,0.3-0.9,0.4-1.4
+	c0.1-0.6,0.3-1.2,0.4-1.7c0.1-0.5,0.2-1.1,0.3-1.6c0.1-0.7,0.3-1.3,0.4-2c0-0.1,0-0.3,0.1-0.4c0-0.3,0.1-0.6,0.1-0.9
+	c0.1-1,0.3-1.9,0.4-2.9c0-0.2,0-0.3,0.1-0.5c0.1-1,0.2-1.9,0.3-2.9c0-0.1,0-0.3,0-0.4c0.1-1.1,0.1-2.2,0.2-3.3c0-0.2,0-0.4,0-0.5
+	c0-1.1,0-2.3,0-3.4c-0.2-14.7-10-29.4-25.1-28.8c0,0,0,0,0,0c0,0,0,0,0,0c-7.5,0.3-14.7,3.8-22.1,5.1c-6.4,1.1-15,2.7-23.7,3.2
+	c-11.2,0.7-22.6-0.1-30.1-5.4c-14.4-10.1-7.2-34.6-21.7-44.4c-3.5-2.4-7.3-2.9-11.2-2.7c-5.6,0.3-11.4,2.2-16.9,2.5
+	c-1,0.1-1.9,0.1-2.9,0c-10.9-0.7-20.6-8.9-28.7-16c-14.2-12.4-12.9-33.8-29.1-45.5c-0.5-0.4-1-0.7-1.5-1.1c-0.2-0.1-0.4-0.3-0.6-0.4
+	c-0.4-0.3-0.8-0.5-1.2-0.7c-0.3-0.2-0.6-0.4-0.8-0.5c0,0-0.1,0-0.1-0.1c0,0-0.1,0-0.1-0.1c-0.4-0.2-0.8-0.4-1.2-0.7
+	c-0.2-0.1-0.3-0.2-0.5-0.3c-0.2-0.1-0.3-0.2-0.5-0.3c-0.1,0-0.1-0.1-0.2-0.1c-0.4-0.2-0.8-0.4-1.2-0.6c-0.1-0.1-0.2-0.1-0.3-0.2
+	c-0.2-0.1-0.4-0.2-0.7-0.3c-0.1,0-0.1-0.1-0.2-0.1c-0.4-0.2-0.8-0.4-1.2-0.5c0,0-0.1,0-0.1-0.1c-0.3-0.1-0.6-0.3-0.8-0.4
+	c-0.1,0-0.2-0.1-0.2-0.1c-0.4-0.2-0.8-0.3-1.2-0.5c-0.3-0.1-0.6-0.3-1-0.4c-0.1,0-0.2-0.1-0.3-0.1c-0.4-0.1-0.7-0.3-1.1-0.4
+	c-0.3-0.1-0.7-0.2-1-0.4c-0.1,0-0.2-0.1-0.3-0.1c-0.4-0.1-0.7-0.2-1.1-0.3c-0.4-0.1-0.7-0.2-1.1-0.3c-0.1,0-0.2-0.1-0.3-0.1
+	c-0.3-0.1-0.7-0.2-1-0.3c-0.4-0.1-0.7-0.2-1.1-0.3c-0.1,0-0.2-0.1-0.4-0.1c-0.3-0.1-0.7-0.2-1-0.2c-0.4-0.1-0.7-0.2-1.1-0.2
+	c-0.1,0-0.3-0.1-0.4-0.1c-0.3-0.1-0.7-0.1-1-0.2c-0.4-0.1-0.7-0.1-1.1-0.2c-0.1,0-0.3-0.1-0.4-0.1c-0.3-0.1-0.7-0.1-1-0.1
+	c-0.4-0.1-0.7-0.1-1.1-0.1c-0.2,0-0.3,0-0.5-0.1c-0.3,0-0.7-0.1-1-0.1c-0.3,0-0.7-0.1-1-0.1c-0.2,0-0.4,0-0.5,0c-0.3,0-0.7,0-1-0.1
+	c-0.3,0-0.6,0-0.9-0.1c-0.2,0-0.4,0-0.6,0c-0.4,0-0.7,0-1.1,0c-0.3,0-0.6,0-0.8,0c-0.2,0-0.4,0-0.7,0c-0.4,0-0.7,0-1.1,0
+	c-0.1,0-0.3,0-0.4,0c-0.1,0-0.2,0-0.3,0c-0.3,0-0.5,0-0.8,0c-0.4,0-0.7,0-1.1,0.1c-0.2,0-0.3,0-0.5,0c-0.1,0-0.2,0-0.3,0
+	c-0.2,0-0.4,0-0.7,0c-0.4,0-0.9,0.1-1.3,0.1c-0.2,0-0.3,0-0.5,0c-0.1,0-0.2,0-0.3,0c-0.2,0-0.3,0-0.5,0.1c-0.3,0-0.5,0.1-0.8,0.1
+	c-0.5,0.1-1,0.1-1.5,0.2c0,0,0,0,0,0c0,0,0,0-0.1,0c-0.1,0-0.2,0-0.3,0c-0.2,0-0.4,0.1-0.6,0.1c0,0-0.1,0-0.1,0
+	c-0.4,0.1-0.7,0.1-1.1,0.2c-0.2,0-0.3,0.1-0.5,0.1c0,0-0.1,0-0.1,0c-0.1,0-0.1,0-0.2,0c-0.1,0-0.3,0.1-0.4,0.1c-0.1,0-0.3,0-0.4,0.1
+	c-0.5,0.1-1,0.2-1.5,0.3c-0.1,0-0.2,0.1-0.4,0.1c0,0-0.1,0-0.1,0c-0.2,0.1-0.4,0.1-0.7,0.2c-0.3,0.1-0.6,0.2-0.9,0.2
+	c-0.1,0-0.2,0.1-0.4,0.1c0,0-0.1,0-0.1,0c0,0,0,0-0.1,0c-0.5,0.1-1,0.3-1.5,0.5c0,0,0,0-0.1,0c-0.2,0.1-0.4,0.1-0.6,0.2
+	c-0.1,0-0.2,0.1-0.3,0.1c-0.2,0.1-0.4,0.1-0.6,0.2c-0.1,0-0.2,0.1-0.2,0.1c-0.2,0.1-0.3,0.1-0.5,0.2c-0.1,0-0.1,0-0.2,0.1
+	c-0.3,0.1-0.6,0.2-0.8,0.3c-0.4,0.1-0.7,0.3-1.1,0.4c-0.1,0-0.2,0.1-0.3,0.1c-0.2,0.1-0.5,0.2-0.7,0.3c-0.1,0-0.1,0-0.2,0.1
+	c0,0,0,0,0,0c-0.1,0-0.2,0.1-0.3,0.1c-0.3,0.1-0.6,0.2-0.8,0.4c-0.3,0.1-0.6,0.3-1,0.4c0,0-0.1,0-0.1,0c-0.1,0.1-0.3,0.1-0.4,0.2
+	c-0.3,0.2-0.7,0.3-1,0.5c-0.3,0.1-0.6,0.3-0.9,0.5c-0.1,0.1-0.3,0.2-0.4,0.2c-0.3,0.2-0.7,0.4-1,0.5c0,0-0.1,0-0.1,0
+	c-0.2,0.1-0.4,0.2-0.6,0.4c-0.1,0.1-0.3,0.2-0.4,0.2c0,0,0,0,0,0c0,0-0.1,0.1-0.1,0.1c-0.4,0.3-0.9,0.5-1.3,0.8
+	c-0.3,0.2-0.6,0.4-0.9,0.5c-0.5,0.3-1,0.6-1.4,1c-0.1,0-0.1,0.1-0.2,0.1c-0.2,0.1-0.4,0.2-0.5,0.4c-0.4,0.3-0.8,0.6-1.2,0.8
+	c-0.2,0.1-0.3,0.2-0.5,0.4c-0.2,0.2-0.5,0.4-0.7,0.5c-0.2,0.1-0.4,0.3-0.5,0.4c-0.3,0.3-0.6,0.5-1,0.8c0,0,0,0,0,0c0,0,0,0,0,0
+	c0,0,0,0,0,0c0,0,0,0,0,0c-0.3,0.2-0.6,0.4-0.8,0.7c-9.6,8.2-16.9,19.3-27.1,26.6c-5.4,3.9-11.7,6.3-18.1,6.5c-0.3,0-0.6,0-0.9,0
+	c-0.4,0-0.8,0-1.2,0c-0.3,0-0.5,0-0.8-0.1c-0.4,0-0.8-0.1-1.2-0.1c-0.3,0-0.5-0.1-0.8-0.1c-0.4-0.1-0.8-0.1-1.3-0.2
+	c-0.3-0.1-0.5-0.1-0.7-0.2c-0.4-0.1-0.8-0.2-1.3-0.3c-0.2-0.1-0.5-0.1-0.7-0.2c-0.4-0.1-0.9-0.3-1.3-0.5c-0.2-0.1-0.4-0.2-0.6-0.3
+	c-0.5-0.2-0.9-0.4-1.4-0.7c-0.2-0.1-0.3-0.2-0.5-0.2c-0.6-0.3-1.2-0.7-1.9-1.1c-9.7-6.4-15-14.3-26.9-16.9c-0.4-0.1-0.7-0.1-1.1-0.2
+	c-0.7-0.1-1.4-0.2-2.1-0.2c-1.8-0.1-3.5,0.1-5.3,0.5c-0.7,0.2-1.4,0.3-2.1,0.5c-0.2,0.1-0.4,0.1-0.6,0.2c-0.7,0.2-1.3,0.4-2,0.6
+	c-0.2,0.1-0.3,0.1-0.5,0.2c-0.5,0.2-1.1,0.4-1.6,0.6c-0.2,0.1-0.4,0.2-0.5,0.2c-0.6,0.3-1.3,0.6-1.9,0.9c-0.2,0.1-0.3,0.2-0.5,0.3
+	c-0.6,0.3-1.1,0.6-1.7,0.9c-0.1,0.1-0.2,0.1-0.3,0.2c-0.6,0.4-1.3,0.8-1.9,1.2c-0.1,0.1-0.3,0.2-0.4,0.3c-1.3,0.8-2.6,1.7-3.8,2.7
+	c-0.1,0.1-0.2,0.1-0.3,0.2c-0.6,0.5-1.2,1-1.9,1.5c0,0-0.1,0.1-0.1,0.1c-0.6,0.5-1.1,1-1.7,1.5c-0.1,0.1-0.2,0.2-0.3,0.2
+	c-0.1,0.1-0.2,0.1-0.2,0.2c0,0,0,0,0,0C91.5,52.9,80.9,73.1,72.6,88.4c-13.1,23.9-26.2,48-38.3,72.5c0,0,0,0.1,0,0.1
+	c-12.5,25.5-23.9,51.5-32.9,78.5c-1,3-2,6.5-0.8,9.4c1,2.4,3.3,3.9,5.5,5.1c7.5,4.2,15.8,6.6,24.3,7.2c5.2,0.4,9.3-4.6,8.2-10
+	c-0.4-2.2-0.4-4.6,0.3-6.8c1.8-6,7.8-10.1,13.6-9.4c7.8,0.9,13.5,9.2,21.3,9.9c5.3,0.5,10.3-2.6,15.1-5.1c21.1-10.6,45.6-9,68.9-7.2
+	c10,0.8,20.1,1.6,29.4,5.5c9.1,3.9,17,10.5,24.6,17.1c15.7,13.5,31.5,27,45.5,42.4c3.4,3.7,7,7.7,10.7,11.3
+	c5.4,5.5,8.9,8.5,15.2,11.7c0,0,0.1,0,0.1,0.1c2,1.1,4.2,1.4,6.2,1c1.5-0.2,3-0.8,4.3-1.7c0.1-0.1,0.2-0.1,0.2-0.2
+	c0.1-0.1,0.2-0.1,0.2-0.2c0.9-0.7,1.7-1.6,2.4-2.5c1-1.4,1.7-3.1,2-5.1c0.9-5.9,4-11.6,8.1-15.8c4-4,8.5-7.6,13.3-10.9
+	c12.8-8.9,27.7-16,39.9-24.1c3.8-2.5,7.6-4.8,11.4-7c26.3-15,54.8-23.5,82.9-34.1c0.3-0.1,0.7-0.3,1-0.4c0.6-0.2,1.1-0.4,1.7-0.7
+	c0.4-0.2,0.8-0.3,1.3-0.5c0.5-0.2,1-0.4,1.5-0.6c0.4-0.2,0.8-0.4,1.3-0.6c0.5-0.2,1-0.4,1.5-0.7c0.4-0.2,0.8-0.4,1.2-0.6
+	c0.5-0.2,1-0.5,1.5-0.8c0.4-0.2,0.7-0.4,1.1-0.6c0.6-0.3,1.2-0.6,1.8-0.9c0.3-0.1,0.5-0.3,0.8-0.4c0.8-0.5,1.7-0.9,2.5-1.4
+	c0.3-0.2,0.5-0.3,0.8-0.5c0.6-0.3,1.2-0.7,1.7-1c0.3-0.2,0.6-0.4,1-0.6c0.5-0.3,1-0.6,1.5-1c0.3-0.2,0.7-0.4,1-0.7
+	c0.5-0.3,1-0.7,1.5-1c0.3-0.2,0.6-0.4,0.9-0.7c0.5-0.4,1-0.8,1.6-1.2c0.3-0.2,0.5-0.4,0.8-0.6c0.8-0.6,1.5-1.2,2.2-1.8
+	c0.1-0.1,0.3-0.2,0.4-0.4c0.6-0.5,1.2-1,1.8-1.5c0.3-0.2,0.5-0.5,0.8-0.7c0.4-0.4,0.9-0.8,1.3-1.2c0.3-0.3,0.6-0.5,0.9-0.8
+	c0.4-0.4,0.8-0.8,1.2-1.2C491.1,197.1,491.4,196.9,491.7,196.6z"
+                  />
+
+                  <circle
+                  id="Bedok Polyclinic-circle"
+                  cx="100"
+                  cy="100"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title><br>Name: Bedok Polyclinic  <br>
+                    Address: 11 Bedok North Street 1 Heartbeat@Bedok #02-01, #03-01, Singapore 469662 <br> 
+                    Type: Pfizer <br> 
+                    Phone:6343 1121</title>
+                </circle>
+                <circle
+                  id="Bukit Batok Polyclinic-circle"
+                  cx="250"
+                  cy="100"
+                  r="8"
+                  fill="yellow"
+                >
+                <title><br>Name: Bukit Batok Polyclinic  
+                  Address: 50 Bukit Batok West Avenue 3, Singapore 659164 <br> 
+                  Type: Moderna <br> 
+                  Phone:6343 1122</title>
+                </circle>
+                <circle
+                  id="Bukit Merah Polyclinic-circle"
+                  cx="200"
+                  cy="120"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title><br>Name: Bukit Merah Polyclinic  
+                    Address: 162 Bukit Merah Central Level 4, Singapore 150163<br> 
+                    Type: Pfizer <br> 
+                    Phone:6343 1123</title>
+                </circle>
+                <circle
+                  id="Choa Chu Kang Polyclinic-circle"
+                  cx="150"
+                  cy="130"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title><br>Name: Choa Chu Kang Polyclinic  
+                    Address: 162 Bukit Merah Central Level 4, Singapore 150163<br> 
+                    Type: Pfizer <br> 
+                    Phone:6343 1124</title>
+                  </circle>
+                  <circle
+                  id="Clementi Polyclinic-circle"
+                  cx="200"
+                  cy="140"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title>Name: Clementi Polyclinic
+                    Address: 451 Clementi Avenue 3, Singapore 120451<br> 
+                    Type: Pfizer <br> 
+                    Phone:6343 1125</title>
+                  </circle>
+                  <circle
+                  id="Geylang Polyclinic-circle"
+                  cx="200"
+                  cy="190"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title>Name:  Geylang Polyclinic
+                    Address:21 Geylang East Central, Singapore 389707 <br> 
+                    Type: Pfizer <br> 
+                    Phone:6343 1126</title>
+                  </circle>
+                  <circle
+                  id="Hougang Polyclinic-circle"
+                  cx="200"
+                  cy="160"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title>Name:  Hougang Polyclinic
+                    Address:89 Hougang Avenue 4, Singapore 538829 <br> 
+                    Type: Pfizer <br> 
+                    Phone:6765 1121</title>
+                  </circle>
+                  <circle
+                  id="Jurong Polyclinic-circle"
+                  cx="220"
+                  cy="120"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title>Name:Jurong Polyclinic
+                    Address:190 Jurong East Avenue 1, Singapore 609788<br> 
+                    Type: Pfizer <br> 
+                    Phone:6765 1122</title>
+                  </circle>
+                  <circle
+                  id="Marine Parade Polyclinic-circle"
+                  cx="250"
+                  cy="200"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title>Name:  Marine Parade Polyclinic
+                    Address:80 Marine Parade Central, Singapore 440080 <br> 
+                    Type: Pfizer <br> 
+                    Phone:67651123</title>
+                  </circle>
+                  <circle
+                  id="Outram Polyclinic-circle"
+                  cx="350"
+                  cy="190"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title>Name:Outram Polyclinic
+                    Address:3 Second Hospital Avenue, #02-00 Health Promotion Board Building, Singapore 168937 <br> 
+                    Type:Comirnaty <br> 
+                    Phone:6765 1124</title>
+                  </circle>
+                  <circle
+                  id="Pasir Ris Polyclinic-circle"
+                  cx="350"
+                  cy="250"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title>Name:Pasir Ris Polyclinic
+                    Address:1 Pasir Ris Drive 4, Singapore 519457 <br> 
+                    Type:Comirnaty <br> 
+                    Phone:6765 1125</title>
+                  </circle>
+                  <circle
+                  id="Pioneer Polyclinic-circle"
+                  cx="300"
+                  cy="150"
+                  r="8"
+                  fill="yellow"
+                >
+                  <title>Name:Pioneer Polyclinic
+                    Address:26 Jurong West Street 61, Singapore 648201 <br> 
+                    Type:Moderna <br> 
+                    Phone:6765 1126</title>
+                </svg>
+              </div>
+              <div id="tooltip" class="tooltip"></div>
+            </div>
+
+            <div class="col-6">
+              <table id="coursesTable" class="display">
+                <thead>
+                  <tr>
+                    <td>Name</td>
+                    <td>Address</td>
+                    <td>Vaccine Type</td>
+                    <td>Phone</td>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  <tr>
+                    <td>Bedok Polyclinic</td>
+                    <td>
+                      11 Bedok North Street 1 Heartbeat@Bedok #02-01, #03-01,
+                      Singapore 469662
+                    </td>
+                    <td>Pfizer</td>
+                    <td>6343 1121</td>
+                  </tr>
+                  <tr>
+                    <td>Bukit Batok Polyclinic</td>
+                    <td>50 Bukit Batok West Avenue 3, Singapore 659164</td>
+                    <td>Moderna</td>
+                    <td>6343 1122</td>
+                  </tr>
+                  <tr>
+                    <td>Bukit Merah Polyclinic</td>
+                    <td>162 Bukit Merah Central Level 4, Singapore 150163</td>
+                    <td>Pfizer</td>
+                    <td>6343 1123</td>
+                  </tr>
+                  <tr>
+                    <td>Choa Chu Kang Polyclinic</td>
+                    <td>2 Teck Whye Crescent, Singapore 688846</td>
+                    <td>Moderna</td>
+                    <td>6343 1124</td>
+                  </tr>
+                  <tr>
+                    <td>Clementi Polyclinic</td>
+                    <td>451 Clementi Avenue 3, Singapore 120451</td>
+                    <td>Pfizer</td>
+                    <td>6343 1125</td>
+                  </tr>
+                  <tr>
+                    <td>Geylang Polyclinic</td>
+                    <td>21 Geylang East Central, Singapore 389707</td>
+                    <td>Pfizer</td>
+                    <td>6343 1126</td>
+                  </tr>
+                  <tr>
+                    <td>Hougang Polyclinic</td>
+                    <td>89 Hougang Avenue 4, Singapore 538829</td>
+                    <td>Pfizer</td>
+                    <td>6765 1121</td>
+                  </tr>
+                  <tr>
+                    <td>Jurong Polyclinic</td>
+                    <td>190 Jurong East Avenue 1, Singapore 609788</td>
+                    <td>Pfizer</td>
+                    <td>6765 1122</td>
+                  </tr>
+                  <tr>
+                    <td>Marine Parade Polyclinic</td>
+                    <td>80 Marine Parade Central, Singapore 440080</td>
+                    <td>Pfizer</td>
+                    <td>6765 1123</td>
+                  </tr>
+                  <tr>
+                    <td>Outram Polyclinic</td>
+                    <td>
+                      3 Second Hospital Avenue, #02-00 Health Promotion Board
+                      Building, Singapore 168937
+                    </td>
+                    <td>Comirnaty</td>
+                    <td>6765 1124</td>
+                  </tr>
+                  <tr>
+                    <td>Pasir Ris Polyclinic</td>
+                    <td>1 Pasir Ris Drive 4, Singapore 519457</td>
+                    <td>Comirnaty</td>
+                    <td>6765 1125</td>
+                  </tr>
+                  <tr>
+                    <td>Pioneer Polyclinic</td>
+                    <td>26 Jurong West Street 61, Singapore 648201</td>
+                    <td>Moderna</td>
+                    <td>6765 1126</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <footer class="container-fluid bg-dark text-light p-4">
+                      <p>@ CopyRight 2021, The Lion Press</p>
+          </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      new fullpage("#fullpage", {
+        sectionsColor: ["#B19CD9", "#FFDAB9", "#98FF98"],
+        navigation: true,
+            });
+
+      var circles = document.querySelectorAll("circle");
+
+      circles.forEach(function (circle) {
+        circle.addEventListener("mouseover", function (event) {
+          showTooltip(circle.id.replace("-circle", ""), event);
+        });
+
+        circle.addEventListener("mouseout", function () {
+          hideTooltip();
+        });
+      });
+
+      function showTooltip(title, event) {
+        var tooltip = document.getElementById("tooltip");
+        tooltip.innerHTML = title;
+        tooltip.style.left = event.pageX + "px";
+        tooltip.style.top = event.pageY + "px";
+        tooltip.style.display = "block";
+      }
+
+      function hideTooltip() {
+        var tooltip = document.getElementById("tooltip");
+        tooltip.style.display = "none";
+      }
+
+      anime({
+        targets: ".demo6",
+        innerHTML: [0, 257510],
+        easing: "linear",
+        round: 1,
+        duration: 2000,
+      });
+      anime({
+        targets: ".demo7",
+        innerHTML: [0, 1365],
+        easing: "linear",
+        round: 1,
+        duration: 2000,
+      });
+      anime({
+        targets: ".demo8",
+        innerHTML: [0, 678],
+        easing: "linear",
+        round: 1,
+        duration: 2000,
+      });
+      anime({
+        targets: ".long-text-container p",
+        opacity: [0, 1],
+        easing: "easeInOutQuad",
+        delay: anime.stagger(300),
+      });
+      $(document).ready(function () {
+        // Initialize DataTable
+        var table = $("#coursesTable").DataTable({
+          paging: true,
+          searching: true,
+          ordering: true,
+          info: true,
+          lengthMenu: [5, 10, 25, 50],
+          pageLength: 5,
+        });
+
+        const labels = [
+          "1 Dec 2021",
+          "2 Dec 2021",
+          "3 Dec 2021",
+          "4 Dec 2021",
+          "5 Dec 2021",
+          "6 Dec 2021",
+          "7 Dec 2021",
+          "8 Dec 2021",
+          "9 Dec 2021",
+          "10 Dec 2021",
+          "11 Dec 2021",
+          "12 Dec 2021",
+          "13 Dec 2021",
+          "14 Dec 2021",
+        ];
+        const data = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Daily Cases (past 2 weeks)",
+              backgroundColor: "rgb(255, 99, 132)",
+              borderColor: "rgb(255, 99, 132)",
+              data: [
+                1134, 1056, 986, 771, 756, 721, 654, 742, 689, 512, 455, 376,
+                244, 103,
+              ],
+            },
+          ],
+        };
+
+        const config = {
+          type: "bar",
+          data: data,
+          options: {
+            responsive: true,
+          },
+        };
+
+        const myChart = new Chart(document.getElementById("myChart"), config);
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        var container = document.getElementById("svg-container");
+
+        var timeline = anime.timeline({
+          easing: "easeOutExpo", // You can change the easing function
+          duration: 500, // Duration for each animation
+          delay: anime.stagger(100), // Delay between each figure animation
+        });
+
+        data.forEach(function (_, i) {
+          var figure = document.createElement("div");
+          figure.className = "human-figure";
+
+          var svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-person-standing" viewBox="0 0 16 16">
+          <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M6 6.75v8.5a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2.75a.75.75 0 0 0 1.5 0v-2.5a.25.25 0 0 1 .5 0"/>
+      </svg>`;
+
+          var fillColor = i === 9 ? "red" : "blue";
+          svgContent = svgContent.replace(
+            'fill="currentColor"',
+            'fill="' + fillColor + '"'
+          );
+
+          figure.innerHTML = svgContent;
+          container.appendChild(figure);
+
+          timeline.add({
+            targets: figure,
+            opacity: [0, 1],
+            translateY: [30, 0], // Adjust the translation values as needed
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
